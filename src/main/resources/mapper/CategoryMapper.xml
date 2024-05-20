@@ -1,0 +1,25 @@
+<mapper namespace="com.example.demo.mapper.CategoryMapper">
+  <!-- 모든 카테고리 조회 -->
+  <select id="findAll" resultType="com.example.demo.entity.Category">
+    SELECT * FROM category
+  </select>
+  <!-- 대분류 ID로 카테고리 조회 -->
+  <select id="findCategoriesByBigCategoryId" parameterType="int" resultType="com.example.demo.entity.Category">
+    SELECT * FROM category WHERE bigcategory_id = #{bigCategoryId}
+  </select>
+
+  <insert id="insertCategory" parameterType="com.example.demo.entity.Category">
+    INSERT INTO category (name, bigcategory_id)
+    VALUES (#{name}, #{bigCategoryId})
+  </insert>
+
+  <update id="updateCategory" parameterType="com.example.demo.entity.Category">
+    UPDATE category
+    SET name=#{name}, bigcategory_id=#{bigCategoryId}
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteCategory" parameterType="int">
+    DELETE FROM category WHERE id = #{id}
+  </delete>
+</mapper>

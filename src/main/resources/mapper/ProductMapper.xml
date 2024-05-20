@@ -1,0 +1,44 @@
+<!-- src/main/resources/mapper/ProductMapper.xml -->
+<mapper namespace="com.example.demo.mapper.ProductMapper">
+  <!-- 제품 ID로 제품 조회 -->
+  <select id="findProductById" parameterType="int" resultType="com.example.demo.entity.Product">
+    SELECT * FROM product WHERE id = #{id}
+  </select>
+  <!-- 카테고리기반 제품 조회 -->
+  <select id="findProductsByCategoryId" parameterType="int" resultType="com.example.demo.entity.Product">
+    SELECT * FROM product WHERE category_id = #{categoryId}
+  </select>
+  <!-- 새로운 제품 추가 -->
+  <insert id="insertProduct" parameterType="com.example.demo.entity.Product">
+    INSERT INTO product (title, brand, option, description, img_url, url, category_id)
+    VALUES (#{title}, #{brand}, #{option}, #{description}, #{imgUrl}, #{url}, #{categoryId})
+  </insert>
+  <!-- 기존 제품 정보 업데이트 -->
+  <update id="updateProduct" parameterType="com.example.demo.entity.Product">
+    UPDATE product
+    SET title=#{title}, brand=#{brand}, option=#{option}, description=#{description},
+    img_url=#{imgUrl}, url=#{url}, category_id=#{categoryId}
+    WHERE id=#{id}
+  </update>
+  <!-- 기존 제품 삭제 -->
+  <delete id="deleteProduct" parameterType="int">
+    DELETE FROM product WHERE id = #{id}
+  </delete>
+  <!-- 모든 제품 조회 -->
+  <select id="findAllProducts" resultType="com.example.demo.entity.Product">
+    SELECT * FROM product
+  </select>
+  <!-- 제품 검색 -->
+  <select id="searchProducts" parameterType="string" resultType="com.example.demo.entity.Product">
+    SELECT * FROM product WHERE title LIKE CONCAT('%', #{keyword}, '%') OR description LIKE CONCAT('%', #{keyword}, '%')
+  </select>
+
+  <!-- 일정 할인율 이상의 할인 상품 조회 -->
+  <select id="findDiscountedProducts" parameterType="int" resultType="com.example.demo.entity.Product">
+    SELECT p.*, pr.discount_rate
+    FROM product p
+    JOIN price pr ON p.id = pr.product_id
+    WHERE pr.discount_rate >= #{discountRate}
+  </select>
+
+</mapper>

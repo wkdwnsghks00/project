@@ -1,0 +1,20 @@
+<mapper namespace="com.example.demo.mapper.BigCategoryMapper">
+  <select id="findAll" resultType="com.example.demo.entity.BigCategory">
+    SELECT * FROM bigcategory
+  </select>
+
+  <insert id="insertBigCategory" parameterType="com.example.demo.entity.BigCategory">
+    INSERT INTO bigcategory (name)
+    VALUES (#{name})
+  </insert>
+
+  <update id="updateBigCategory" parameterType="com.example.demo.entity.BigCategory">
+    UPDATE bigcategory
+    SET name=#{name}
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteBigCategory" parameterType="int">
+    DELETE FROM bigcategory WHERE id = #{id}
+  </delete>
+</mapper>

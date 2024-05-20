@@ -1,0 +1,22 @@
+<mapper namespace="com.example.demo.mapper.PriceMapper">
+  <!-- 제품 ID로 가격 변동 내역 조회 -->
+  <select id="findPricesByProductId" parameterType="int" resultType="com.example.demo.entity.Price">
+    SELECT * FROM price WHERE product_id = #{productId}
+  </select>
+  <!-- 새로운 가격 정보 추가 -->
+  <insert id="insertPrice" parameterType="com.example.demo.entity.Price">
+    INSERT INTO price (origin_price, sale_price, coupon_price, discount_rate, crawl_time, product_id)
+    VALUES (#{originPrice}, #{salePrice}, #{couponPrice}, #{discountRate}, #{crawlTime}, #{productId})
+  </insert>
+  <!-- 기존 가격 정보 업데이트 -->
+  <update id="updatePrice" parameterType="com.example.demo.entity.Price">
+    UPDATE price
+    SET origin_price=#{originPrice}, sale_price=#{salePrice}, coupon_price=#{couponPrice},
+    discount_rate=#{discountRate}, crawl_time=#{crawlTime}
+    WHERE id=#{id}
+  </update>
+  <!-- 기존 가격 정보 삭제 -->
+  <delete id="deletePrice" parameterType="int">
+    DELETE FROM price WHERE id = #{id}
+  </delete>
+</mapper>
