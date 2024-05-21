@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <!-- src/main/resources/mapper/ProductMapper.xml -->
 <mapper namespace="com.example.demo.mapper.ProductMapper">
   <!-- 제품 ID로 제품 조회 -->
@@ -10,13 +15,13 @@
   </select>
   <!-- 새로운 제품 추가 -->
   <insert id="insertProduct" parameterType="com.example.demo.entity.Product">
-    INSERT INTO product (title, brand, option, description, img_url, url, category_id)
+    INSERT INTO product (title, brand, prod_option, description, img_url, url, category_id)
     VALUES (#{title}, #{brand}, #{option}, #{description}, #{imgUrl}, #{url}, #{categoryId})
   </insert>
   <!-- 기존 제품 정보 업데이트 -->
   <update id="updateProduct" parameterType="com.example.demo.entity.Product">
     UPDATE product
-    SET title=#{title}, brand=#{brand}, option=#{option}, description=#{description},
+    SET title=#{title}, brand=#{brand}, prod_option=#{option}, description=#{description},
     img_url=#{imgUrl}, url=#{url}, category_id=#{categoryId}
     WHERE id=#{id}
   </update>

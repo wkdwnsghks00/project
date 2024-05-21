@@ -17,11 +17,11 @@ public interface ProductMapper {
     @Select("SELECT * FROM product WHERE category_id = #{categoryId}")
     List<Product> findProductsByCategoryId(int categoryId);
 
-    @Insert("INSERT INTO product (title, brand, option, description, img_url, url, category_id) " +
+    @Insert("INSERT INTO product (title, brand, prod_option, description, img_url, url, category_id) " +
         "VALUES (#{title}, #{brand}, #{option}, #{description}, #{imgUrl}, #{url}, #{categoryId})")
     void insertProduct(Product product);
 
-    @Update("UPDATE product SET title=#{title}, brand=#{brand}, option=#{option}, description=#{description}, " +
+    @Update("UPDATE product SET title=#{title}, brand=#{brand}, prod_option=#{option}, description=#{description}, " +
         "img_url=#{imgUrl}, url=#{url}, category_id=#{categoryId} WHERE id=#{id}")
     void updateProduct(Product product);
 

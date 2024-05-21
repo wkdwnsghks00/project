@@ -1,0 +1,18 @@
+
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: demo
+
+  datasource:
+    url: jdbc:mysql://mydb1.c5ye0co6cobn.ap-northeast-2.rds.amazonaws.com:3306/crawl_data
+    username: root
+    password: Wnsghks189493_
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml

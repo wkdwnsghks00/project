@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <typeAliases>
+    <typeAlias alias="Product" type="com.example.demo.entity.Product"/>
+    <typeAlias alias="Price" type="com.example.demo.entity.Price"/>
+    <typeAlias alias="BigCategory" type="com.example.demo.entity.BigCategory"/>
+    <typeAlias alias="Category" type="com.example.demo.entity.Category"/>
+  </typeAliases>
+
+  <mappers>
+    <mapper resource="mapper/ProductMapper.xml"/>
+    <mapper resource="mapper/PriceMapper.xml"/>
+    <mapper resource="mapper/BigCategoryMapper.xml"/>
+    <mapper resource="mapper/CategoryMapper.xml"/>
+  </mappers>
+</configuration>
